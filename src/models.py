@@ -16,7 +16,7 @@ class Buyer(db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(180), unique=True, nullable=False)
     cpf = db.Column(db.String(11), unique=True, nullable=False)
-    payments = db.relationship('Payment', backref='payment')
+    payments = db.relationship('payments')
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
 class Card(db.Model):
@@ -27,7 +27,7 @@ class Card(db.Model):
     card_number = db.Column(db.String, nullable=False)
     expiration_date = db.Column(db.DateTime, nullable=False)
     cvv = db.Column(db.Integer, unique=True, nullable=False)
-    payments = db.relationship('Payment', backref='payment')
+    payments = db.relationship('payments')
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
 class Payment(db.Model):
