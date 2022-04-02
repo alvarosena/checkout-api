@@ -1,11 +1,17 @@
 from models import db, Buyer
 
 class BuyerService:
-
     def create(self, data):
         buyer = Buyer(name=data['name'], email=data['email'], cpf=data['cpf'])
         db.session.add(buyer)
         db.session.commit()
 
-        result = Buyer.query.filter_by(email=buyer['email']).first()
+        result = {
+            "id": buyer.id,
+            "name": buyer.name,
+            "cpf": buyer.cpf,
+            "created_at": str(buyer.created_at)
+        }
+
         return result
+        

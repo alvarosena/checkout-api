@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Blueprint, jsonify, request
 
 from modules.buyers.buyer_service import BuyerService
@@ -13,4 +12,3 @@ def create_buyer():
 
     response = buyerService.create(data)
     return jsonify(response)
-    

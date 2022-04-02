@@ -12,7 +12,3 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 app.register_blueprint(buyers, url_prefix='/api/v1')
-
-@app.route('/')
-def index():
-    return {"message": "Hello, World"}
