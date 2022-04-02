@@ -11,4 +11,12 @@ def create_buyer():
     data = request.json
 
     response = buyerService.create(data)
+    return jsonify(response), 201
+
+
+@buyers.route('/buyers/<id>')
+def find_by_id(id):
+    buyerService = BuyerService()
+
+    response = buyerService.find_by_id(id)
     return jsonify(response)
