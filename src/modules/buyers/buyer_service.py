@@ -2,18 +2,23 @@ from models import db, Buyer
 
 class BuyerService:
     def create(self, data):
-        buyer = Buyer(name=data['name'], email=data['email'], cpf=data['cpf'])
-        db.session.add(buyer)
-        db.session.commit()
+        buyer_exists = Buyer.query.filter_by(email=data['email']).first()
 
-        result = {
-            "id": buyer.id,
-            "name": buyer.name,
-            "cpf": buyer.cpf,
-            "created_at": str(buyer.created_at)
-        }
+        if buyer_exists:
+            raise Exception('Buyer already exists.')
+        else:
+            buyer = Buyer(name=data['name'], email=data['email'], cpf=data['cpf'])
+            db.session.add(buyer)
+            db.session.commit()
 
-        return result
+            result = {
+                "id": buyer.id,
+                "name": buyer.name,
+                "cpf": buyer.cpf,
+                "created_at": str(buyer.created_at)
+            }
+
+            return result
 
     def find_by_id(self, id):
         buyer = Buyer.query.filter_by(id=id).first()

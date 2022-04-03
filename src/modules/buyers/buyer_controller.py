@@ -6,12 +6,16 @@ buyers = Blueprint('buyers', __name__)
 
 @buyers.route('/buyers', methods=['POST'])
 def create_buyer():
-    buyerService = BuyerService()
+    try:
+        buyerService = BuyerService()
 
-    data = request.json
+        data = request.json
 
-    response = buyerService.create(data)
-    return jsonify(response), 201
+        response = buyerService.create(data)
+        return jsonify(response), 201
+
+    except Exception as err:
+        return jsonify({'error': str(err)}), 400
 
 @buyers.route('/buyers/<id>')
 def find_by_id(id):
