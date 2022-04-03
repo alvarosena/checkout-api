@@ -19,7 +19,7 @@ class BuyerService:
         buyer = Buyer.query.filter_by(id=id).first()
 
         if not buyer:
-            return {'error': 'Buyer not found.'}
+            raise Exception('Buyer not found!')
         else:
             result = {
                 "id": buyer.id,

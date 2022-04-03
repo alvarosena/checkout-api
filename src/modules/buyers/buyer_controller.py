@@ -13,10 +13,13 @@ def create_buyer():
     response = buyerService.create(data)
     return jsonify(response), 201
 
-
 @buyers.route('/buyers/<id>')
 def find_by_id(id):
-    buyerService = BuyerService()
+    try:
+        buyerService = BuyerService()
 
-    response = buyerService.find_by_id(id)
-    return jsonify(response)
+        response = buyerService.find_by_id(id)
+        return jsonify(response)
+
+    except Exception as err:
+        return jsonify({'error': str(err)}), 404
