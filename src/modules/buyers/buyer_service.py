@@ -1,7 +1,7 @@
 from models import db, Buyer
 
 class BuyerService:
-    def create(self, data):
+    def create_buyer(self, data):
         buyer_exists = Buyer.query.filter_by(email=data['email']).first()
 
         if buyer_exists:
@@ -20,7 +20,7 @@ class BuyerService:
 
             return result
 
-    def find_by_id(self, id):
+    def get_bueyer(self, id):
         buyer = Buyer.query.filter_by(id=id).first()
 
         if not buyer:

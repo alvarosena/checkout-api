@@ -11,18 +11,18 @@ def create_buyer():
 
         data = request.json
 
-        response = buyerService.create(data)
+        response = buyerService.create_buyer(data)
         return jsonify(response), 201
 
     except Exception as err:
         return jsonify({'error': str(err)}), 400
 
 @buyers.route('/buyers/<id>')
-def find_by_id(id):
+def get_bueyer(id):
     try:
         buyerService = BuyerService()
 
-        response = buyerService.find_by_id(id)
+        response = buyerService.get_bueyer(id)
         return jsonify(response)
 
     except Exception as err:
