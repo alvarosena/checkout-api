@@ -5,8 +5,11 @@ Make sure you have the lastest version of Python.
 <pre>git clone 'repository'</pre>
 
 ### Active the environment and running the app
+Activate the environment Linux and MacOS:
+<pre>. envm/bin/activate</pre>
+Install all project dependecies
 <pre>pip3 install -r requirements.txt</pre>
-<pre>Linux/MacOS: . envm/bin/activate</pre>
+Run the app
 <pre>flask run</pre>
 
 ## Technologies
@@ -22,7 +25,7 @@ __POST CREATE BUYER__
 ```json
 {
     "name": "Brian Craw",
-	"email": "brian@example.com",
+    "email": "brian@example.com",
 	"cpf": "00000000000"
 }
 ```
